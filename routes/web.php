@@ -21,13 +21,37 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', Index::class)->name('home');
+<<<<<<< HEAD
+Route::get('/blog',Blog::class)->name('blog.page');
+Route::get('/animal',Animal::class)->name('animal.page');
+
+
+Route::prefix('zookeeper')
+->middleware('role:zookeeper')
+->group(function(){
+
+    
+    Route::get('/animals', IndexAnimal::class)->name('admin.animal.view');
+    Route::get('/animals/{id}', EditAnimal::class)->name('admin.animal.edit');
+
+    Route::get('/posts', IndexPost::class)->name('admin.post.index');
+    Route::get('/posts/{id}', EditPost::class)->name('admin.post.edit');
+
+    Route::get('/users', IndexUser::class)->name('admin.user.index');
+    Route::get('/users/{id}', EditUser::class)->name('admin.user.edit');
+
+});
+
+=======
 Route::get('/login', Login::class)->name('login.page');
 Route::get('/register', Register::class)->name('register.page');
 
 
+>>>>>>> 2c0c7ad6d8672cbe9d8ca78436fef7bf0169168a
 
 
 Route::prefix('admin')
+->middleware('role:admin')
 ->group(function()
 
 {
