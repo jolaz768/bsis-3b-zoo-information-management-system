@@ -45,7 +45,7 @@ Route::get('/register', Register::class)->name('register.page');
 
 
 Route::prefix('admin')
-// ->middleware('role:admin')
+->middleware('role:admin')
 ->group(function()
 {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
