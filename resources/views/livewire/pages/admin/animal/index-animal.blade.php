@@ -146,8 +146,8 @@
                             </thead>
 
                             <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                                @forelse ($this->animals() as $animal)
-                                    <tr>
+                                @forelse ($this->animals() as $animal_key => $animal)
+                                    <tr wire:key="animal-{{ $animal_key }}">
                                         <td class="size-px whitespace-nowrap">
                                             <div class="ps-6 py-3">
                                             </div>

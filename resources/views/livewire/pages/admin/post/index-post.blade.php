@@ -102,8 +102,8 @@
                             </thead>
 
                             <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                                @forelse ($this->posts() as $post)
-                                    <tr>
+                                @forelse ($this->posts() as $post_key => $post)
+                                    <tr wire:key="post-{{ $post_id }}">
                                         <td class="size-px whitespace-nowrap">
                                             <div class="ps-6 py-3">
                                                 <label for="hs-at-with-checkboxes-1" class="flex">

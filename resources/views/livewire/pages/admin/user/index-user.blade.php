@@ -99,8 +99,8 @@
 
                             <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
 
-                                @forelse ($this->users() as $user)
-                                    <tr>
+                                @forelse ($this->users() as $user_key => $user)
+                                    <tr wire:click="edit({{ $user->id }})">
                                         <td class="ps-6 py-4 whitespace-nowrap">
                                             <label for="hs-at-with-checkboxes-1" class="flex">
                                                 <input type="checkbox"

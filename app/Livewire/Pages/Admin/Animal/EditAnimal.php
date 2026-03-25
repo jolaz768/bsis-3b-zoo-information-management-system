@@ -183,7 +183,7 @@ class EditAnimal extends Component
 
        
 
-        redirect()->route('admin.animal.view')->with('success', 'Animal updated successfully!');
+        redirect()->route('admin.dashboard')->with('success', 'Animal updated successfully!');
         // this will update the animal in the database with the new data
     }
 

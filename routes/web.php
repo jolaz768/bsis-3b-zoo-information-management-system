@@ -18,8 +18,6 @@ use App\Livewire\Pages\Auth\Register;
 use App\Livewire\Pages\Public\About;
 use App\Livewire\Pages\Public\AnimalSingle;
 use App\Livewire\Pages\Public\Index;
-use App\Livewire\Pages\Zookeeper\DashboardZookeeper;
-use App\Livewire\Pages\Zookeeper\ZooAnimals\UpdateAnimal;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,14 +40,6 @@ Route::post('/logout', function () {
 
     return redirect()->route('home');
 })->name('logout')->middleware('auth');
-
-
-Route::prefix('zookeeper')
-// ->middleware('role:zookeeper')
-->group(function(){
-    Route::get('/dashboard', DashboardZookeeper::class)->name('zookeeper.dashboard');
-    Route::get('/animals/{id}', UpdateAnimal::class)->name('zookeeper.animal.update');
-});
 
 
 Route::prefix('admin')
