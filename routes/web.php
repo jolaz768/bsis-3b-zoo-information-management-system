@@ -23,6 +23,11 @@ use App\Livewire\Pages\Public\AnimalSingle;
 use App\Livewire\Pages\Public\Blog;
 use App\Livewire\Pages\Public\BlogSingle;
 use App\Livewire\Pages\Public\Index;
+use App\Livewire\Pages\Zookeeper\Animal\Index as zookeeperanimal;
+use App\Livewire\Pages\Zookeeper\Animal\Index as AnimalIndex;
+use App\Livewire\Pages\Zookeeper\DashboardZookeeper;
+use App\Livewire\Pages\Zookeeper\Post\Index as PostIndex;
+use App\Livewire\Pages\Zookeeper\Post\ZookeeperIndexPost;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +55,7 @@ Route::post('/logout', function () {
 
 
 Route::prefix('admin')
-->middleware(['auth', 'role:admin|zookeeper'])
+->middleware(['auth', 'role:admin'])
 ->group(function()
 {
     Route::get('/dashboard', DashboardAdmin::class)->name('admin.dashboard');
@@ -74,5 +79,18 @@ Route::prefix('admin')
     Route::get('/history/animal', HistoryAnimal::class)->name('admin.history.animal');
     Route::get('/history/post', HistoryPost::class)->name('admin.history.post');
     Route::get('/history/user', HistoryUser::class)->name('admin.history.user');
+
+});
+});
+
+Route::prefix('zookeeper')
+->middleware(['auth', 'role:zookeeper'])
+->group(function()
+{
+    Route::get('/dashboard',DashboardZookeeper::class)->name('zookeeper.dashboard');
+
+    Route::get('/animal',zookeeperanimal::class)->name('zookeeper.animal');
+
+    Route::get('/post',ZookeeperIndexPost::class)->name('zookeeper.post')
 
 });

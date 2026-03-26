@@ -30,6 +30,18 @@ class DatabaseSeeder extends Seeder
         // Assign role
         $user->assignRole('admin');
 
+        Role::firstOrCreate(['name' => 'zookeeper']);
+
+        // Create zookeeper user
+        $user = User::factory()->create([
+            'name' => 'zookeeper',
+            'email' => 'zookeeper@gmail.com',
+            'password' => bcrypt('password123'),
+        ]);
+
+        // Assign role
+        $user->assignRole('zookeeper');
+
 
         $this->call([
             PermissionSeeder::class,

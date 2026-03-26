@@ -25,8 +25,8 @@ class Login extends Component
             if (Auth::user()->hasRole('admin')) {
                 return redirect()->intended(route('admin.dashboard'));
             }elseif(Auth::user()->hasRole('zookeeper')){ {
-                return redirect()->intended(route('admin.dashboard'));
-            }}else{
+                return redirect()->intended(route('zookeeper.dashboard'));
+            }}else{ 
                 return redirect()->intended(route('home'));
             }
                 
