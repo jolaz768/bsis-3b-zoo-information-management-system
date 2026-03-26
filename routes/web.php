@@ -1,6 +1,5 @@
 <?php
 
-use App\Livewire\Pages\Public\BlogSingle;
 use App\Livewire\Pages\Admin\Animal\CreateAnimal;
 use App\Livewire\Pages\Admin\Animal\EditAnimal;
 use App\Livewire\Pages\Admin\Animal\IndexAnimal;
@@ -19,7 +18,13 @@ use App\Livewire\Pages\Auth\Register;
 use App\Livewire\Pages\Public\About;
 use App\Livewire\Pages\Public\AnimalSingle;
 use App\Livewire\Pages\Public\Blog;
+use App\Livewire\Pages\Public\BlogSingle;
 use App\Livewire\Pages\Public\Index;
+use App\Livewire\Pages\Zookeeper\Animal\Index as zookeeperanimal;
+use App\Livewire\Pages\Zookeeper\Animal\Index as AnimalIndex;
+use App\Livewire\Pages\Zookeeper\DashboardZookeeper;
+use App\Livewire\Pages\Zookeeper\Post\Index as PostIndex;
+use App\Livewire\Pages\Zookeeper\Post\ZookeeperIndexPost;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,7 +52,7 @@ Route::post('/logout', function () {
 
 
 Route::prefix('admin')
-->middleware(['auth', 'role:admin|zookeeper'])
+->middleware(['auth', 'role:admin'])
 ->group(function()
 {
     Route::get('/dashboard', DashboardAdmin::class)->name('admin.dashboard');
@@ -67,5 +72,17 @@ Route::prefix('admin')
     Route::get('/users', IndexUser::class)->name('admin.user.index');
     Route::get('/users/create', CreateUser::class)->name('admin.user.create');
     Route::get('/users/{id}', EditUser::class)->name('admin.user.edit');
+
+});
+
+Route::prefix('zookeeper')
+->middleware(['auth', 'role:zookeeper'])
+->group(function()
+{
+    Route::get('/dashboard',DashboardZookeeper::class)->name('zookeeper.dashboard');
+
+    Route::get('/animal',zookeeperanimal::class)->name('zookeeper.animal');
+
+    Route::get('/post',ZookeeperIndexPost::class)->name('zookeeper.post')
 
 });

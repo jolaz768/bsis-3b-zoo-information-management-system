@@ -11,6 +11,7 @@ class DashboardAdmin extends Component
 {
     public $animal;
 
+
     #[Computed()]
     public function animals()
     {
