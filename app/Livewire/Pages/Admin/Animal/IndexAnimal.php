@@ -29,9 +29,6 @@ class IndexAnimal extends Component
     public function delete($id)
     {
         $animal = Animal::findOrFail($id);
-
-        
-
         $animal->delete();
         // this will delete the animal from the database
     }
