@@ -4,9 +4,9 @@
   <!-- Grid -->
   <div class="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
 
-    @forelse ($this->posts as $pkey => $post)
+    @forelse ($this->posts() as $pkey => $post)
       <!-- Card -->
-      <a wire:key="{{ $pkey }}" class="group block rounded-xl overflow-hidden focus:outline-none" href="#">
+      <a wire:key="post-{{ $pkey }}" class="group block rounded-xl overflow-hidden focus:outline-none" href="{{ route('blog.single', $post->id) }}">
         <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
           <div class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
             @if ($post->image)

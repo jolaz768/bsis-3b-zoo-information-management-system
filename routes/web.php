@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Pages\Public\BlogSingle;
 use App\Livewire\Pages\Admin\Animal\CreateAnimal;
 use App\Livewire\Pages\Admin\Animal\EditAnimal;
 use App\Livewire\Pages\Admin\Animal\IndexAnimal;
@@ -28,6 +29,7 @@ Route::get('/', Index::class)->name('home');
 Route::get('/about', About::class)->name('about');
 Route::get('/animals/{id}', AnimalSingle::class)->name('animal.single');
 Route::get('/blog', Blog::class)->name('blog');
+Route::get('blog/{id}', BlogSingle::class)->name('blog.single');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login.page');
