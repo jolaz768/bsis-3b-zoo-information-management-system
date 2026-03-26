@@ -18,6 +18,12 @@ class Animal extends Model
         'image',
     ];
 
+    protected $casts = [
+        'age' => 'integer',
+        'weight' => 'float',
+        'height' => 'float',
+    ];
+
     public function species()
     {
         return $this->belongsTo(Species::class);
@@ -36,5 +42,5 @@ class Animal extends Model
     public function needs()
     {
         return $this->belongsToMany(Need::class);
-    }   
+    }
 }

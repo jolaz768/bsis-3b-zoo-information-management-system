@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('species_id')->constrained('species')->onDelete('cascade');
             $table->integer('age');
-            $table->float('weight');
-            $table->float('height');
+            $table->decimal('weight', 8, 2);
+            $table->decimal('height', 8, 2);
             $table->foreignId('habitat_id')->constrained('habitats')->onDelete('cascade');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->text('description');

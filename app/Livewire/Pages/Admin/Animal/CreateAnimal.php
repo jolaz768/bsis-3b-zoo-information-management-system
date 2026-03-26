@@ -70,8 +70,8 @@ class CreateAnimal extends Component
             'name' => 'required|string|min:3|max:255',
             'species_id' => 'required|exists:species,id',
             'age' => 'required|integer|min:0|max:100',
-            'weight' => 'required|numeric|min:0',
-            'height' => 'required|numeric|min:0',
+            'weight' => 'required|numeric|min:0|max:999999',
+            'height' => 'required|numeric|min:0|max:1000',
             'habitat_id' => 'required|exists:habitats,id',
             'category_id' => 'required|exists:categories,id',
             'selectedNeeds' => 'required|array|min:1',
@@ -98,10 +98,12 @@ class CreateAnimal extends Component
             'weight.required' => 'The weight is required.',
             'weight.numeric' => 'The weight must be a number.',
             'weight.min' => 'The weight must be at least 0.',
+            'weight.max' => 'The weight must be at most 999999.',
 
             'height.required' => 'The height is required.',
             'height.numeric' => 'The height must be a number.',
             'height.min' => 'The height must be at least 0.',
+            'height.max' => 'The height must be at most 1000.',
 
             'habitat_id.required' => 'The habitat is required.',
             'habitat_id.exists' => 'The selected habitat is invalid.',
@@ -131,9 +133,9 @@ class CreateAnimal extends Component
 
         $species_id = $this->species_id;
 
-        $age = Str::of($this->age)->trim();
-        $weight = Str::of($this->weight)->trim();
-        $height = Str::of($this->height)->trim();
+        $age = (int) $this->age;
+        $weight = (float) $this->weight;
+        $height = (float) $this->height;
 
         $habitat_id = $this->habitat_id;
         $category_id = $this->category_id;
